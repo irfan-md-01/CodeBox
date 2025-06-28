@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-key")
-ALLOWED_HOSTS = ["codebox.onrender.com"]
+ALLOWED_HOSTS = ["codebox-43s8.onrender.com"]
 
 
 # Application definition
