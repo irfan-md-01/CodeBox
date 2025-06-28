@@ -44,11 +44,3 @@ An online compiler built with Django that supports Python, C++, and Java code ex
   - Runs the compiled class files using `java` runtime
 
 
-
-## 📞 Support
-
-If you encounter any issues or have questions, please open an issue on the GitHub repository.
-
----
-
-**Built with ❤️ using Django and CodeMirror**
