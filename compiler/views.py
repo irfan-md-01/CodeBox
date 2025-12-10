@@ -15,6 +15,17 @@ def cpp(request):
         # print( cpp_code)
         # print("Did you see the message")
 
+
+        if request.POST.get("action") == "share":
+            shared = SharedCode.objects.create(
+                language=language,
+                code=cpp_code,
+                input_data=cpp_input_data
+            )
+            print("hi", shared.unique_id)
+            return redirect(f"/share/{shared.unique_id}")
+             
+
         request.session["cpp_code"] = cpp_code
         request.session["cpp_input"] = cpp_input_data
 
@@ -118,4 +129,14 @@ def home(request):
                 output = "Time Limit Exceeded"
             except Exception as e:
                 output = str(e) 
+
     return render(request, "index.html", {"output": output, "code": code, "input_data": input_data})
+
+
+def view_shared_code(request, uid):
+    shared = SharedCode.objects.get(unique_id=uid)
+    return render(request, "cpp.html", {
+        "cpp_code": shared.code,
+        "cpp_input_data": shared.input_data,
+        "cpp_output" : None
+    })
