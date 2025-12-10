@@ -16,6 +16,21 @@
         padding: 10px;
         font-family: monospace;
     }
+
+    .btn {
+        padding: 12px 18px;
+        background: #4a6cf7;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    .btn:hover {
+        background: #3a57d0;
+    }
 </style>
 {% endblock %}
 
@@ -27,9 +42,11 @@
     <textarea id="cpp_code" name="cpp_code" placeholder="Write your code here...">{{ cpp_code|default:'' }}</textarea>
     <br>
     <label for="cpp_input">Provide Input:</label>
-    <textarea id="cpp_input" name="cpp_input" placeholder="Enter input for your code...">{{ cpp_input_data|default:'' }} </textarea>
+    <textarea id="cpp_input" name="cpp_input"
+        placeholder="Enter input for your code...">{{ cpp_input_data|default:'' }} </textarea>
     <br>
     <button type="submit">Run Code</button>
+    <button type="submit" name="action" value="share" class="btn">Share Code</button>
 </form>
 {% if cpp_output %}
 <div class="output">
@@ -43,17 +60,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
 
 <script>
-    
+
     const codeEditor = CodeMirror.fromTextArea(document.getElementById("cpp_code"), {
         mode: "text/x-c++src",
         theme: "dracula",
         lineNumbers: true,
         indentUnit: 4,
         tabSize: 4,
-        
+
     });
     codeEditor.setSize(null, "410px");
-    
+
     document.querySelector("form").addEventListener("submit", (event) => {
         document.getElementById("cpp_code").value = codeEditor.getValue();
     });
