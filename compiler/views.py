@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 import subprocess
+from .models import SharedCode
 
 def cpp(request):
     cpp_output = None
@@ -140,3 +141,4 @@ def view_shared_code(request, uid):
         "cpp_input_data": shared.input_data,
         "cpp_output" : None
     })
+
